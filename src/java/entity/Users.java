@@ -26,68 +26,68 @@ import javax.xml.bind.annotation.XmlTransient;
  * @author hoanghung
  */
 @Entity
-@Table(name = "User")
+@Table(name = "Users")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "User.findAll", query = "SELECT u FROM User u")
-    , @NamedQuery(name = "User.findByTaiKhoan", query = "SELECT u FROM User u WHERE u.taiKhoan = :taiKhoan")
-    , @NamedQuery(name = "User.findByHoVaTen", query = "SELECT u FROM User u WHERE u.hoVaTen = :hoVaTen")
-    , @NamedQuery(name = "User.findByDiaChi", query = "SELECT u FROM User u WHERE u.diaChi = :diaChi")
-    , @NamedQuery(name = "User.findBySoDienThoai", query = "SELECT u FROM User u WHERE u.soDienThoai = :soDienThoai")
-    , @NamedQuery(name = "User.findByAvatar", query = "SELECT u FROM User u WHERE u.avatar = :avatar")
-    , @NamedQuery(name = "User.findByStatus", query = "SELECT u FROM User u WHERE u.status = :status")})
-public class User implements Serializable {
+    @NamedQuery(name = "Users.findAll", query = "SELECT u FROM Users u")
+    , @NamedQuery(name = "Users.findByTaiKhoan", query = "SELECT u FROM Users u WHERE u.taiKhoan = :taiKhoan")
+    , @NamedQuery(name = "Users.findByHoVaTen", query = "SELECT u FROM Users u WHERE u.hoVaTen = :hoVaTen")
+    , @NamedQuery(name = "Users.findByDiaChi", query = "SELECT u FROM Users u WHERE u.diaChi = :diaChi")
+    , @NamedQuery(name = "Users.findBySoDienThoai", query = "SELECT u FROM Users u WHERE u.soDienThoai = :soDienThoai")
+    , @NamedQuery(name = "Users.findByAvatar", query = "SELECT u FROM Users u WHERE u.avatar = :avatar")
+    , @NamedQuery(name = "Users.findByStatus", query = "SELECT u FROM Users u WHERE u.status = :status")})
+public class Users implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 50)
-    @Column(name = "taiKhoan")
+    @Column(name = "TaiKhoan")
     private String taiKhoan;
     @Basic(optional = false)
     @NotNull
     @Lob
     @Size(min = 1, max = 2147483647)
-    @Column(name = "matKhau")
+    @Column(name = "MatKhau")
     private String matKhau;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 1073741823)
-    @Column(name = "hoVaTen")
+    @Column(name = "HoVaTen")
     private String hoVaTen;
     @Basic(optional = false)
     @NotNull
     @Lob
     @Size(min = 1, max = 2147483647)
-    @Column(name = "gmail")
+    @Column(name = "Gmail")
     private String gmail;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 1073741823)
-    @Column(name = "diaChi")
+    @Column(name = "DiaChi")
     private String diaChi;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 12)
-    @Column(name = "soDienThoai")
+    @Column(name = "SoDienThoai")
     private String soDienThoai;
     @Size(max = 1073741823)
-    @Column(name = "avatar")
+    @Column(name = "Avatar")
     private String avatar;
     @Column(name = "Status")
     private Boolean status;
     @OneToMany(mappedBy = "taiKhoan")
-    private Collection<Order1> order1Collection;
+    private Collection<Orders> ordersCollection;
 
-    public User() {
+    public Users() {
     }
 
-    public User(String taiKhoan) {
+    public Users(String taiKhoan) {
         this.taiKhoan = taiKhoan;
     }
 
-    public User(String taiKhoan, String matKhau, String hoVaTen, String gmail, String diaChi, String soDienThoai) {
+    public Users(String taiKhoan, String matKhau, String hoVaTen, String gmail, String diaChi, String soDienThoai) {
         this.taiKhoan = taiKhoan;
         this.matKhau = matKhau;
         this.hoVaTen = hoVaTen;
@@ -161,12 +161,12 @@ public class User implements Serializable {
     }
 
     @XmlTransient
-    public Collection<Order1> getOrder1Collection() {
-        return order1Collection;
+    public Collection<Orders> getOrdersCollection() {
+        return ordersCollection;
     }
 
-    public void setOrder1Collection(Collection<Order1> order1Collection) {
-        this.order1Collection = order1Collection;
+    public void setOrdersCollection(Collection<Orders> ordersCollection) {
+        this.ordersCollection = ordersCollection;
     }
 
     @Override
@@ -179,10 +179,10 @@ public class User implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof User)) {
+        if (!(object instanceof Users)) {
             return false;
         }
-        User other = (User) object;
+        Users other = (Users) object;
         if ((this.taiKhoan == null && other.taiKhoan != null) || (this.taiKhoan != null && !this.taiKhoan.equals(other.taiKhoan))) {
             return false;
         }
@@ -191,7 +191,7 @@ public class User implements Serializable {
 
     @Override
     public String toString() {
-        return "entity.User[ taiKhoan=" + taiKhoan + " ]";
+        return "entity.Users[ taiKhoan=" + taiKhoan + " ]";
     }
     
 }

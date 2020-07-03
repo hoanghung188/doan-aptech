@@ -44,39 +44,39 @@ public class Product implements Serializable {
     @Id
     @Basic(optional = false)
     @NotNull
-    @Column(name = "idProduct")
+    @Column(name = "IdProduct")
     private Integer idProduct;
     @Basic(optional = false)
     @NotNull
-    @Column(name = "gia")
+    @Column(name = "Gia")
     private double gia;
-    @Column(name = "trangThai")
+    @Column(name = "TrangThai")
     private Boolean trangThai;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 1073741823)
-    @Column(name = "tenSanPham")
+    @Column(name = "TenSanPham")
     private String tenSanPham;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 1073741823)
-    @Column(name = "thongTin")
+    @Column(name = "ThongTin")
     private String thongTin;
-    @Column(name = "soLuongMua")
+    @Column(name = "SoLuongMua")
     private Integer soLuongMua;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 1073741823)
-    @Column(name = "anhDaiDien")
+    @Column(name = "AnhDaiDien")
     private String anhDaiDien;
     @OneToMany(mappedBy = "idProduct")
     private Collection<OrderDetail> orderDetailCollection;
     @OneToMany(mappedBy = "idProduct")
     private Collection<ProductImage> productImageCollection;
-    @JoinColumn(name = "idCatagory", referencedColumnName = "idCatagory")
+    @JoinColumn(name = "IdCatagory", referencedColumnName = "IdCatagory")
     @ManyToOne
     private Category idCatagory;
-    @JoinColumn(name = "idProducer", referencedColumnName = "idProducer")
+    @JoinColumn(name = "IdProducer", referencedColumnName = "IdProducer")
     @ManyToOne
     private Producer idProducer;
 

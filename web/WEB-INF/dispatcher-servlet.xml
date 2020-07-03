@@ -42,5 +42,8 @@
      <bean id= "categoryDao" class="daoImpl.CategoryDaoImpl">
         <property name="sessionFactory" ref="sessionFactory"></property>
     </bean>
+    <bean id= "typeProductDao" class="daoImpl.TypeProductDaoImpl">
+        <property name="sessionFactory" ref="sessionFactory"></property>
+    </bean>
 
 </beans>

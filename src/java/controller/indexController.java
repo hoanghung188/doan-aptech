@@ -8,8 +8,10 @@ package controller;
 
 import dao.CategoryDao;
 import dao.ProductsDao;
+import dao.TypeProductDao;
 import entity.Category;
 import entity.Product;
+import entity.TypeProduct;
 import java.util.List;
 import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,8 +38,12 @@ public class indexController {
     public void setCategoryDao(CategoryDao categoryDao) {
         this.categoryDao = categoryDao;
     }
+    private TypeProductDao typeProductDao;
+    @Autowired
+    public void setTypeProductDao(TypeProductDao typeProductDao) {
+        this.typeProductDao = typeProductDao;
+    }
     
-  
     
     @RequestMapping("/index")
     public String viewIndex(Model model,HttpSession session)
@@ -48,6 +54,9 @@ public class indexController {
            model.addAttribute("listBanChay", listBanChay);
            List<Category> listCategory = categoryDao.getAllCategory();
            model.addAttribute("listCategory", listCategory);
+           List<TypeProduct> listTypeProducts=typeProductDao.getListTypeProduct();
+           model.addAttribute("listTypeProducts", listTypeProducts);
+           
     
         
         // ma danh muc san vi du 4

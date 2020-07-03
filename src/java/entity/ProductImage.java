@@ -36,14 +36,14 @@ public class ProductImage implements Serializable {
     @Id
     @Basic(optional = false)
     @NotNull
-    @Column(name = "idImage")
+    @Column(name = "IdImage")
     private Integer idImage;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 1073741823)
-    @Column(name = "url")
+    @Column(name = "Url")
     private String url;
-    @JoinColumn(name = "idProduct", referencedColumnName = "idProduct")
+    @JoinColumn(name = "IdProduct", referencedColumnName = "IdProduct")
     @ManyToOne
     private Product idProduct;
 

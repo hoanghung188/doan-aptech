@@ -36,20 +36,20 @@ public class OrderDetail implements Serializable {
     @Id
     @Basic(optional = false)
     @NotNull
-    @Column(name = "idOrderDetail")
+    @Column(name = "IdOrderDetail")
     private Integer idOrderDetail;
     @Basic(optional = false)
     @NotNull
-    @Column(name = "soLuong")
+    @Column(name = "SoLuong")
     private int soLuong;
     @Basic(optional = false)
     @NotNull
-    @Column(name = "gia")
+    @Column(name = "Gia")
     private double gia;
-    @JoinColumn(name = "idOrder", referencedColumnName = "idOrder")
+    @JoinColumn(name = "IdOrder", referencedColumnName = "IdOrder")
     @ManyToOne
-    private Order1 idOrder;
-    @JoinColumn(name = "idProduct", referencedColumnName = "idProduct")
+    private Orders idOrder;
+    @JoinColumn(name = "IdProduct", referencedColumnName = "IdProduct")
     @ManyToOne
     private Product idProduct;
 
@@ -90,11 +90,11 @@ public class OrderDetail implements Serializable {
         this.gia = gia;
     }
 
-    public Order1 getIdOrder() {
+    public Orders getIdOrder() {
         return idOrder;
     }
 
-    public void setIdOrder(Order1 idOrder) {
+    public void setIdOrder(Orders idOrder) {
         this.idOrder = idOrder;
     }
 

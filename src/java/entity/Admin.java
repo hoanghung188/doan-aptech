@@ -38,32 +38,32 @@ public class Admin implements Serializable {
     @Id
     @Basic(optional = false)
     @NotNull
-    @Column(name = "idAdmin")
+    @Column(name = "IdAdmin")
     private Integer idAdmin;
     @Lob
     @Size(max = 2147483647)
-    @Column(name = "taiKhoan")
+    @Column(name = "TaiKhoan")
     private String taiKhoan;
     @Basic(optional = false)
     @NotNull
     @Lob
     @Size(min = 1, max = 2147483647)
-    @Column(name = "matKhau")
+    @Column(name = "MatKhau")
     private String matKhau;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 1073741823)
-    @Column(name = "hoVaTen")
+    @Column(name = "HoVaTen")
     private String hoVaTen;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 1073741823)
-    @Column(name = "diaChi")
+    @Column(name = "DiaChi")
     private String diaChi;
-    @Column(name = "trangThai")
+    @Column(name = "TrangThai")
     private Boolean trangThai;
     @Size(max = 12)
-    @Column(name = "soDienThoai")
+    @Column(name = "SoDienThoai")
     private String soDienThoai;
 
     public Admin() {

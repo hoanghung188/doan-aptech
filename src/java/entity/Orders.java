@@ -31,68 +31,68 @@ import javax.xml.bind.annotation.XmlTransient;
  * @author hoanghung
  */
 @Entity
-@Table(name = "Order")
+@Table(name = "Orders")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Order1.findAll", query = "SELECT o FROM Order1 o")
-    , @NamedQuery(name = "Order1.findByIdOrder", query = "SELECT o FROM Order1 o WHERE o.idOrder = :idOrder")
-    , @NamedQuery(name = "Order1.findByTrangThai", query = "SELECT o FROM Order1 o WHERE o.trangThai = :trangThai")
-    , @NamedQuery(name = "Order1.findByStatus", query = "SELECT o FROM Order1 o WHERE o.status = :status")
-    , @NamedQuery(name = "Order1.findByHoVaTen", query = "SELECT o FROM Order1 o WHERE o.hoVaTen = :hoVaTen")
-    , @NamedQuery(name = "Order1.findByDiaChi", query = "SELECT o FROM Order1 o WHERE o.diaChi = :diaChi")
-    , @NamedQuery(name = "Order1.findByThoiGianOrder", query = "SELECT o FROM Order1 o WHERE o.thoiGianOrder = :thoiGianOrder")})
-public class Order1 implements Serializable {
+    @NamedQuery(name = "Orders.findAll", query = "SELECT o FROM Orders o")
+    , @NamedQuery(name = "Orders.findByIdOrder", query = "SELECT o FROM Orders o WHERE o.idOrder = :idOrder")
+    , @NamedQuery(name = "Orders.findByTrangThai", query = "SELECT o FROM Orders o WHERE o.trangThai = :trangThai")
+    , @NamedQuery(name = "Orders.findByStatus", query = "SELECT o FROM Orders o WHERE o.status = :status")
+    , @NamedQuery(name = "Orders.findByHoVaTen", query = "SELECT o FROM Orders o WHERE o.hoVaTen = :hoVaTen")
+    , @NamedQuery(name = "Orders.findByDiaChi", query = "SELECT o FROM Orders o WHERE o.diaChi = :diaChi")
+    , @NamedQuery(name = "Orders.findByThoiGianOrder", query = "SELECT o FROM Orders o WHERE o.thoiGianOrder = :thoiGianOrder")})
+public class Orders implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
     @Basic(optional = false)
     @NotNull
-    @Column(name = "idOrder")
+    @Column(name = "IdOrder")
     private Integer idOrder;
-    @Column(name = "trangThai")
+    @Column(name = "TrangThai")
     private Boolean trangThai;
-    @Column(name = "status")
+    @Column(name = "Status")
     private Boolean status;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 1073741823)
-    @Column(name = "hoVaTen")
+    @Column(name = "HoVaTen")
     private String hoVaTen;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 1073741823)
-    @Column(name = "diaChi")
+    @Column(name = "DiaChi")
     private String diaChi;
     @Basic(optional = false)
     @NotNull
     @Lob
     @Size(min = 1, max = 2147483647)
-    @Column(name = "soDienThoai")
+    @Column(name = "SoDienThoai")
     private String soDienThoai;
     // @Pattern(regexp="[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?", message="Invalid email")//if the field contains email address consider using this annotation to enforce field validation
     @Basic(optional = false)
     @NotNull
     @Lob
     @Size(min = 1, max = 2147483647)
-    @Column(name = "email")
+    @Column(name = "Email")
     private String email;
-    @Column(name = "thoiGianOrder")
+    @Column(name = "ThoiGianOrder")
     @Temporal(TemporalType.TIMESTAMP)
     private Date thoiGianOrder;
-    @JoinColumn(name = "taiKhoan", referencedColumnName = "taiKhoan")
-    @ManyToOne
-    private User taiKhoan;
     @OneToMany(mappedBy = "idOrder")
     private Collection<OrderDetail> orderDetailCollection;
+    @JoinColumn(name = "TaiKhoan", referencedColumnName = "TaiKhoan")
+    @ManyToOne
+    private Users taiKhoan;
 
-    public Order1() {
+    public Orders() {
     }
 
-    public Order1(Integer idOrder) {
+    public Orders(Integer idOrder) {
         this.idOrder = idOrder;
     }
 
-    public Order1(Integer idOrder, String hoVaTen, String diaChi, String soDienThoai, String email) {
+    public Orders(Integer idOrder, String hoVaTen, String diaChi, String soDienThoai, String email) {
         this.idOrder = idOrder;
         this.hoVaTen = hoVaTen;
         this.diaChi = diaChi;
@@ -164,14 +164,6 @@ public class Order1 implements Serializable {
         this.thoiGianOrder = thoiGianOrder;
     }
 
-    public User getTaiKhoan() {
-        return taiKhoan;
-    }
-
-    public void setTaiKhoan(User taiKhoan) {
-        this.taiKhoan = taiKhoan;
-    }
-
     @XmlTransient
     public Collection<OrderDetail> getOrderDetailCollection() {
         return orderDetailCollection;
@@ -179,6 +171,14 @@ public class Order1 implements Serializable {
 
     public void setOrderDetailCollection(Collection<OrderDetail> orderDetailCollection) {
         this.orderDetailCollection = orderDetailCollection;
+    }
+
+    public Users getTaiKhoan() {
+        return taiKhoan;
+    }
+
+    public void setTaiKhoan(Users taiKhoan) {
+        this.taiKhoan = taiKhoan;
     }
 
     @Override
@@ -191,10 +191,10 @@ public class Order1 implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Order1)) {
+        if (!(object instanceof Orders)) {
             return false;
         }
-        Order1 other = (Order1) object;
+        Orders other = (Orders) object;
         if ((this.idOrder == null && other.idOrder != null) || (this.idOrder != null && !this.idOrder.equals(other.idOrder))) {
             return false;
         }
@@ -203,7 +203,7 @@ public class Order1 implements Serializable {
 
     @Override
     public String toString() {
-        return "entity.Order1[ idOrder=" + idOrder + " ]";
+        return "entity.Orders[ idOrder=" + idOrder + " ]";
     }
     
 }

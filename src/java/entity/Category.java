@@ -11,6 +11,8 @@ import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
@@ -38,16 +40,19 @@ public class Category implements Serializable {
     @Id
     @Basic(optional = false)
     @NotNull
-    @Column(name = "idCatagory")
+    @Column(name = "IdCatagory")
     private Integer idCatagory;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 1073741823)
-    @Column(name = "nameCatagory")
+    @Column(name = "NameCatagory")
     private String nameCatagory;
     @Size(max = 1073741823)
-    @Column(name = "icon")
+    @Column(name = "Icon")
     private String icon;
+    @JoinColumn(name = "IdTypeProduct", referencedColumnName = "IdTypeProduct")
+    @ManyToOne
+    private TypeProduct idTypeProduct;
     @OneToMany(mappedBy = "idCatagory")
     private Collection<Product> productCollection;
 
@@ -85,6 +90,14 @@ public class Category implements Serializable {
 
     public void setIcon(String icon) {
         this.icon = icon;
+    }
+
+    public TypeProduct getIdTypeProduct() {
+        return idTypeProduct;
+    }
+
+    public void setIdTypeProduct(TypeProduct idTypeProduct) {
+        this.idTypeProduct = idTypeProduct;
     }
 
     @XmlTransient

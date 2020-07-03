@@ -4,6 +4,7 @@
     Author     : hoanghung
 --%>
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -16,11 +17,10 @@
                     <!-- NAV -->
                     <ul class="main-nav nav navbar-nav">
                         <li class="active"><a href="index.htm">Trang Chủ</a></li>
-                        <li><a href="#">Điện thoại</a></li>
-                        <li><a href="#">Laptop</a></li>
-                        <li><a href="#">TabLet</a></li>
-                        <li><a href="#">Cameras</a></li>
-                        <li><a href="#">Liên Hệ</a></li>
+                        <c:forEach items="${listTypeProducts}" var="p">
+                        <li><a>${p.nameTypeProduct}</a></li>
+                        </c:forEach>
+                        
                         
                     </ul>
                     <!-- /NAV -->

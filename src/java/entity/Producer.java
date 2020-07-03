@@ -39,20 +39,20 @@ public class Producer implements Serializable {
     @Id
     @Basic(optional = false)
     @NotNull
-    @Column(name = "idProducer")
+    @Column(name = "IdProducer")
     private Integer idProducer;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 1073741823)
-    @Column(name = "nameProducer")
+    @Column(name = "NameProducer")
     private String nameProducer;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 1073741823)
-    @Column(name = "diaChi")
+    @Column(name = "DiaChi")
     private String diaChi;
     @Size(max = 12)
-    @Column(name = "soDienThoai")
+    @Column(name = "SoDienThoai")
     private String soDienThoai;
     @OneToMany(mappedBy = "idProducer")
     private Collection<Product> productCollection;
